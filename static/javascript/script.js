@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(articleData);
     articleData.forEach((article) => {
       // console.log(article.thumbnail);
-      articleList.innerHTML += `<div class="card m-auto my-2" style="width: 18rem;">
+      articleList.innerHTML += `<div class="card m-auto my-2" style="width: 24rem;">
       <img src="${article.thumbnail}" class="card-img-top mt-3 p-2" alt="${article.title}">
       <div class="card-body">
         <h5 class="card-title">${article.title}</h5>
