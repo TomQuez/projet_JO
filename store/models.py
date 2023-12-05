@@ -16,3 +16,6 @@ class Blog_article(models.Model):
     title=models.CharField(max_length=200)
     description=models.TextField()
     thumbnail=models.ImageField(upload_to="blog_article_images",blank=True,null=True)
+    
+    def __str__(self):
+        return self.title
