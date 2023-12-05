@@ -19,3 +19,28 @@ def get_blog_articles(request):
         'data':data,
     }
     return JsonResponse(context)
+
+def offers(request):
+    offers=Offer.objects.all()
+    context={
+        'offers':offers,
+    }
+    return render(request,'store/offers.html',context)
+
+def get_offers_data(request):
+    offers=Offer.objects.all()
+    data=[]
+    for offer in offers:
+        object={
+            'name':offer.name,
+            'price':offer.price,
+            'stock':offer.stock,
+            'description':offer.description,
+            'sales_number':offer.sales_number,
+            'thumbnail':offer.thumbnail.url
+        }
+        data.append(object)
+    context={
+        'data':data,
+    }
+    return JsonResponse(context)

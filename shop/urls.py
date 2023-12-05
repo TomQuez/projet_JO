@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from store.views import index,get_blog_articles   
+from store.views import index,get_blog_articles,offers,get_offers_data   
 from shop import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='index'),
     path('get_blog_articles/',get_blog_articles,name='get_blog_articles'),
+    path('offers/',offers,name='offers'),
+    path('get_offers_data/',get_offers_data,name='get_offers_data'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
