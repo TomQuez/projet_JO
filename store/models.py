@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Offer(models.Model):
@@ -12,6 +13,12 @@ class Offer(models.Model):
     def __str__(self):
         return f'{self.name} ({self.stock})'
     
+    def get_absolute_url(self):
+        return reverse('offers')
+    
+    class Meta:
+        ordering=['name']
+    
 class Blog_article(models.Model):
     title=models.CharField(max_length=200)
     description=models.TextField()
@@ -19,3 +26,6 @@ class Blog_article(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('index')
