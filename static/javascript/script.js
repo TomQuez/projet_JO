@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <li class="list-group-item">Prix : ${offer.price} €</li>
           
           <li class="list-group-item">Billets disponibles : ${offer.stock} </li>
-         <li><a href="/offers/${offer.slug}/">Voir l'offre</a></li>
+         <li class ="list-group-item"><a href="/offers/${offer.slug}/">Voir l'offre</a></li>
           </ul>
       </div>`;
     });
