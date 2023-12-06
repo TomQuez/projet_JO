@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>S'inscrire</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="username">Nom</label>
+            <input type="text" name="username" id="username" placeholder="votre nom" required>
+        </p>
+        <p>
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname" id="firstname" placeholder="votre prénom" required>
+        </p>
+        <p>
+            <label for="email">Votre email</label>
+            <input type="email" name="email" id="email" placeholder="exemple@truc.com" required>
+        </p>
+        <p>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" placeholder="mot de passe" required>
+        </p>
+        <input type="submit" value="S'inscrire">
+    </form>
+
+
+{% endblock %}
