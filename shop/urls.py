@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
 from store.views import index,get_blog_articles,offers,get_offers_data   
-from accounts.views import signup, logout_user
+from accounts.views import signup, logout_user,login_user
 from shop import settings
 
 urlpatterns = [
@@ -29,4 +29,5 @@ urlpatterns = [
     path('get_offers_data/',get_offers_data,name='get_offers_data'),
     path('signup/',signup,name='signup'),
     path('logout/',logout_user,name='logout'),
+    path('login/',login_user,name='login'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

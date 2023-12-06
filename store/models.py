@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from shop.settings import AUTH_USER_MODEL
+
 # Create your models here.
 class Offer(models.Model):
     name=models.CharField(max_length=128)
@@ -29,3 +31,13 @@ class Blog_article(models.Model):
     
     def get_absolute_url(self):
         return reverse('index')
+    
+    
+class Order(models.Model):
+    user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
+    offer=models.ForeignKey(Offer,on_delete=models.CASCADE)
+    quantity=models.IntegerField(default=1)
+    ordered=models.BooleanField(default=False)
+    
+    def __str__(self):
+        return f'{self.offer.name} ({self.quantity})'

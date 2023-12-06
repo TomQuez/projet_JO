@@ -21,6 +21,8 @@
             <li><a href="{% url 'logout' %}">Déconnexion</a></li>
             <li>Vous êtes connecté en tant que {{user.first_name}} {{user.username}} {{user.id}}</li>
             {% else %}
+            <li>Pour acheter un billet, vous devez être inscrit et ensuite être connecté</li>
+            <li><a href="{% url 'login' %}">Connexion</a></li>
             <li><a href="{% url 'signup' %}">S'inscrire</a></li>
             {% endif %}
             
