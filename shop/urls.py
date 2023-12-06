@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from store.views import index,get_blog_articles,offers,get_offers_data   
+from store.views import index,get_blog_articles,offers,get_offers_data,add_to_cart,offer_detail   
 from accounts.views import signup, logout_user,login_user
 from shop import settings
 
@@ -30,4 +30,6 @@ urlpatterns = [
     path('signup/',signup,name='signup'),
     path('logout/',logout_user,name='logout'),
     path('login/',login_user,name='login'),
+    path('offers/<str:slug>/',offer_detail,name='offer-detail'),
+    path('offers/<str:slug>/add-to-cart/',add_to_cart,name='add-to-cart'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

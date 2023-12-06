@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import Offer,Blog_article
 from django.http import JsonResponse
 # Create your views here.
@@ -34,6 +34,7 @@ def get_offers_data(request):
         object={
             'name':offer.name,
             'price':offer.price,
+            'slug':offer.slug,
             'stock':offer.stock,
             'description':offer.description,
             'sales_number':offer.sales_number,
@@ -44,3 +45,15 @@ def get_offers_data(request):
         'data':data,
     }
     return JsonResponse(context)
+
+def offer_detail(request,slug):
+    offer=get_object_or_404(Offer,slug=slug)
+    context={
+        'offer':offer,
+    }
+    return render(request,'store/offer_detail.html',context)
+
+
+def add_to_cart(request):
+    pass
+    

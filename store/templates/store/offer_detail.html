@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{offer.name}}</h2>
+`<div class="card m-auto my-2" style="width: 18rem;">
+    <img src="{{offer.thumbnail.url}}" class="card-img-top mt-3 p-2" alt="{{offer.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{offer.name}}</h5>
+      <p class="card-text">{{offer.description}}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Prix : {{offer.price}} €</li>
+        
+        <li class="list-group-item">Billets disponibles : {{offer.stock}} </li>
+       
+        </ul>
+    </div>`;
+{% endblock %}
