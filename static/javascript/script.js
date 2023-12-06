@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <li class="list-group-item">Prix : ${offer.price} €</li>
           
           <li class="list-group-item">Billets disponibles : ${offer.stock} </li>
+          {% if user.is_authenticated %}
+          <li class="list-group-item"><a href="">Ajouter au panier</a></li>
+          {% endif %}
           </ul>
       </div>`;
     });
