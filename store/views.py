@@ -106,9 +106,15 @@ def cart(request):
 
 def checkout(request):
     cart=get_object_or_404(Cart,user=request.user)
+    
     for order in cart.orders.all():
         order.ordered=True
+        order.offer.stock-=order.quantity
+        order.offer.sales_number+=order.quantity
         order.save()
+        order.offer.save()
+        
+        
     cart.delete()
     
     
