@@ -1,5 +1,6 @@
-from django.shortcuts import render,get_object_or_404
-from .models import Offer,Blog_article
+from django.shortcuts import render,get_object_or_404,redirect
+from django.urls import reverse
+from .models import Offer,Blog_article,Cart,Order
 from django.http import JsonResponse
 # Create your views here.
 def index(request):
@@ -54,6 +55,21 @@ def offer_detail(request,slug):
     return render(request,'store/offer_detail.html',context)
 
 
-def add_to_cart(request):
-    pass
+def add_to_cart(request,slug):
+    user=request.user
+    offer=get_object_or_404(Offer,slug=slug)
+    cart, _ =Cart.objects.get_or_create(user=user)
+    order,created=Order.objects.get_or_create(user=user,offer=offer)
     
+    if created:
+        cart.orders.add(order)
+        cart.save()
+    else:
+        order.quantity+=1
+        order.save()
+        
+    return redirect(reverse("offer-detail",kwargs={"slug":slug}))
+    
+    
+def cart(request):
+    pass
