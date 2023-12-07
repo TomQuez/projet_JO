@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Votre panier</h2>
+
+{% for order in orders %}
+<div class="card m-auto my-2" style="width: 18rem;">
+    <img src="{{order.offer.thumbnail.url}}" class="card-img-top mt-3 p-2" alt="{{order.offer.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{order.offer.name}}</h5>
+      <p class="card-text">{{order.offer.description}}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Prix unitaire : {{order.offer.price}} €</li>
+        
+        <li class="list-group-item">Quantité dans le panier : {{order.quantity}} </li>
+        
+      
+       
+        </ul>
+    </div>`;
+</div>
+
+
+{% endfor %}
+<p>Prix total du panier : {{total_price}} €</p>
+<p><a href="{% url 'delete-cart' %}">Vider le panier</a></p>
+
+
+{% endblock %}

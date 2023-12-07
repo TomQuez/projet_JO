@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from store.views import index,get_blog_articles,offers,get_offers_data,add_to_cart,offer_detail, cart   
+from store.views import index,get_blog_articles,offers,get_offers_data,add_to_cart,offer_detail, cart, delete_cart   
 from accounts.views import signup, logout_user,login_user
 from shop import settings
 
@@ -33,4 +33,5 @@ urlpatterns = [
     path('offers/<str:slug>/',offer_detail,name='offer-detail'),
     path('offers/<str:slug>/add-to-cart/',add_to_cart,name='add-to-cart'),
     path('cart/',cart,name='cart'),
+    path('cart/delete/',delete_cart,name='delete-cart'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

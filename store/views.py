@@ -3,6 +3,10 @@ from django.urls import reverse
 from .models import Offer,Blog_article,Cart,Order
 from django.http import JsonResponse
 # Create your views here.
+
+
+
+
 def index(request):
     return render(request,'store/index.html')
 
@@ -59,7 +63,7 @@ def add_to_cart(request,slug):
     user=request.user
     offer=get_object_or_404(Offer,slug=slug)
     cart, _ =Cart.objects.get_or_create(user=user)
-    order,created=Order.objects.get_or_create(user=user,offer=offer)
+    order,created=Order.objects.get_or_create(user=user,ordered=False,offer=offer)
     
     if created:
         cart.orders.add(order)
@@ -72,4 +76,31 @@ def add_to_cart(request,slug):
     
     
 def cart(request):
-    pass
+    
+    cart=get_object_or_404(Cart,user=request.user)
+    total_price=0
+    total_quantity=0
+    for order in cart.orders.all():
+        total_price+=order.offer.price*order.quantity
+        
+    for order in cart.orders.all():
+        total_quantity+=order.quantity    
+    
+    
+    context={
+        'orders':cart.orders.all(),
+        'total_price':total_price,
+        'total_quantity':total_quantity,
+    }
+    
+    
+    
+    return render(request,'store/cart.html',context=context)
+
+def delete_cart(request):
+    if cart := request.user.cart:
+        
+        cart.delete()   
+    
+    
+    return redirect('index')

@@ -50,3 +50,7 @@ class Cart(models.Model):
     
     def __str__(self):
         return f'{self.user.username} cart'
+    
+    def delete(self,*args,**kwargs):
+        self.orders.clear()
+        super().delete(*args,**kwargs)
