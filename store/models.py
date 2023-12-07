@@ -54,3 +54,12 @@ class Cart(models.Model):
     def delete(self,*args,**kwargs):
         self.orders.clear()
         super().delete(*args,**kwargs)
+        
+    # def ordered(self):
+        
+    #     for order in self.orders:
+    #         order.ordered=True
+    #         order.save()
+            
+    #     self.orders.clear()
+    #     self.delete()

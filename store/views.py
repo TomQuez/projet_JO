@@ -97,18 +97,22 @@ def cart(request):
     
     return render(request,'store/cart.html',context=context)
 
-def create_checkout_session(request):
-    cart=request.user.cart
-    orders=cart.orders.all()
-    for order in orders:
+# def create_checkout_session(request):
+#     if cart:=request.user.cart:
+#         cart.ordered()
+      
+    
+#     return redirect('index')
+
+def checkout(request):
+    cart=get_object_or_404(Cart,user=request.user)
+    for order in cart.orders.all():
         order.ordered=True
         order.save()
-    
     cart.delete()
     
     
-    return redirect('create-checkout-session')
-
+    return render(request,'store/checkout.html')
 
 def delete_cart(request):
     if cart := request.user.cart:
