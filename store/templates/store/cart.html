@@ -22,6 +22,10 @@
 
 {% endfor %}
 <p>Prix total du panier : {{total_price}} €</p>
+<form action="{% url 'create-checkout-session' %}" method="POST">
+    {% csrf_token %}
+<button type="submit">Procéder au paiement</button>
+</form>
 <p><a href="{% url 'delete-cart' %}">Vider le panier</a></p>
 
 
