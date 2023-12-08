@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>Connexion</h2>
+  
     <form action="" method="POST">
         {% csrf_token %}
         <p>
@@ -11,7 +11,7 @@
         
         <p>
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" placeholder="mot de passe" required>
+            <input type="password" name="password" id="password" placeholder="mot de passe" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
         </p>
         <input type="submit" value="Connexion">
     </form>

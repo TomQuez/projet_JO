@@ -14,11 +14,12 @@
         </p>
         <p>
             <label for="email">Votre email</label>
-            <input type="email" name="email" id="email" placeholder="exemple@truc.com" required>
+            <input type="email" name="email" id="email" placeholder="exemple@truc.com" required >
         </p>
         <p>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" placeholder="mot de passe" required>
+            <label for="password">Mot de passe : </label>
+            <input type="password" name="password" id="password" placeholder="8 caractères" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="8 caractères minimum comprenant un chiffre, une lettre minuscule et une lettre majuscule">
+            
         </p>
         <input type="submit" value="S'inscrire">
     </form>
