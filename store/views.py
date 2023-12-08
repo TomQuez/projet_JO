@@ -113,20 +113,20 @@ def checkout(request):
     unique_qrcode=[]
     
     for order in cart.orders.all():
-        unique_key=str(uuid.uuid4())+str(request.user.id)
+        unique_key=str(uuid.uuid4())+str(request.user.id)+str(order.id)
         unique_keys.append(unique_key)
         order.ordered=True
         order.offer.stock-=order.quantity
         order.offer.sales_number+=order.quantity
         order.save()
         order.offer.save()
-        qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
-        qr.add_data(unique_key)
-        qr.make(fit=True)
-        img=qr.make_image(fill='black',back_color='white')
-        qrcode_path=f'media/qrcode/{unique_key}.png'
-        img.save(qrcode_path)
-        qrcode_file.append(qrcode_path)
+        # qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
+        # qr.add_data(unique_key)
+        # qr.make(fit=True)
+        # img=qr.make_image(fill='black',back_color='white')
+        # qrcode_path=f'media/qrcode/{unique_key}.png'
+        # img.save(qrcode_path)
+        # qrcode_file.append(qrcode_path)
         
         
     cart.delete()

@@ -19,7 +19,7 @@
             <li><a href="{% url 'offers' %}">Nos offres de billets</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Déconnexion</a></li>
-            <li>Vous êtes connecté en tant que {{user.first_name}} {{user.username}} {{user.id}}</li>
+            <li>Vous êtes connecté en tant que {{user.first_name}} {{user.last_name}} {{user.id}}</li>
 
             {% else %}
             <li>Pour acheter un billet, vous devez être inscrit et ensuite être connecté</li>

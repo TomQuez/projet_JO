@@ -22,7 +22,22 @@
 
 {% endfor %}
 <p>Prix total du panier : {{total_price}} €</p>
-<p><a href="{% url 'checkout' %}">Passer la commande</a></p>
+
+<form action="{% url 'checkout' %}" method="POST">
+  {% csrf_token %}
+<label for="name">Nom du titulaire de la carte bancaire :</label>
+<input type="text" required>
+
+<label for="numeroCarte">Numéro de carte bancaire :</label>
+<input type="text" id="numeroCarte" name="numeroCarte" inputmode="numeric" pattern="[0-9\s]{13,19}" placeholder="1234 5678 9012 3456" required>
+<label for="validity">Date de fin de validité (MM/AA) :</label>
+<input type="text" id="validity" name="validity" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/AA" required>
+
+
+
+<button type="submit">Procéder au paiement</button>
+  
+</form>
 <p><a href="{% url 'delete-cart' %}">Vider le panier</a></p>
 
 
