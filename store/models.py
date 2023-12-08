@@ -55,11 +55,11 @@ class Cart(models.Model):
         self.orders.clear()
         super().delete(*args,**kwargs)
         
-    # def ordered(self):
-        
-    #     for order in self.orders:
-    #         order.ordered=True
-    #         order.save()
-            
-    #     self.orders.clear()
-    #     self.delete()
+
+class Ticket(models.Model):
+    user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
+    qrcode_ticket=models.ImageField(upload_to="qrcode",blank=True,null=True)
+    ticket_name=models.CharField(max_length=200)
+    
+    def __str__(self):
+        return f'{self.user.username} ticket'

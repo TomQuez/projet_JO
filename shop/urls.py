@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from store.views import index,get_blog_articles,offers,get_offers_data,add_to_cart,offer_detail, cart, delete_cart,checkout   
+from store.views import index,get_blog_articles,offers,get_offers_data,add_to_cart,offer_detail, cart, delete_cart,checkout,orders_paid   
 from accounts.views import signup, logout_user,login_user
 from shop import settings
 
@@ -36,4 +36,5 @@ urlpatterns = [
     # path('cart/create-checkout-session/',create_checkout_session,name='create-checkout-session'),
     path('cart/delete/',delete_cart,name='delete-cart'),
     path('checkout/',checkout,name='checkout'),
+    path('orders-paid/',orders_paid,name='orders-paid')
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

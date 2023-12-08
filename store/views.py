@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.urls import reverse
-from .models import Offer,Blog_article,Cart,Order
+from .models import Offer,Blog_article,Cart,Order,Ticket
 from django.http import JsonResponse
 from django.db import transaction
 import uuid
@@ -120,12 +120,19 @@ def checkout(request):
         order.offer.sales_number+=order.quantity
         order.save()
         order.offer.save()
+        ticket=Ticket.objects.create(user=request.user)
         qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
         qr.add_data(unique_key)
         qr.make(fit=True)
         img=qr.make_image(fill='black',back_color='white')
-        qrcode_path=f'media/qrcode/{unique_key}.png'
+        ticket.ticket_name=f'{order.offer.name} (nombre de ticket(s) : {order.quantity} )'
+        qrcode_path=f'media/qrcode/{ticket.ticket_name}.png'
         img.save(qrcode_path)
+        ticket.qrcode_ticket=f'qrcode/{ticket.ticket_name}.png'
+        
+        ticket.save()
+        
+        request.user.tickets.add(ticket) 
         
         
         
@@ -141,3 +148,10 @@ def delete_cart(request):
     
     
     return redirect('index')
+
+def orders_paid(request):
+    tickets=request.user.tickets.all()
+    context={
+        'tickets':tickets,
+    }
+    return render(request,'store/orders_paid.html',context=context)
