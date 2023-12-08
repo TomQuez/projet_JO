@@ -113,26 +113,31 @@ def checkout(request):
     unique_qrcode=[]
     
     for order in cart.orders.all():
-        unique_key=str(uuid.uuid4())+str(request.user.id)+str(order.id)
-        unique_keys.append(unique_key)
+        
+        
+        
         order.ordered=True
         order.offer.stock-=order.quantity
         order.offer.sales_number+=order.quantity
         order.save()
         order.offer.save()
-        ticket=Ticket.objects.create(user=request.user)
-        qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
-        qr.add_data(unique_key)
-        qr.make(fit=True)
-        img=qr.make_image(fill='black',back_color='white')
-        ticket.ticket_name=f'{order.offer.name} (nombre de ticket(s) : {order.quantity} )'
-        qrcode_path=f'media/qrcode/{ticket.ticket_name}.png'
-        img.save(qrcode_path)
-        ticket.qrcode_ticket=f'qrcode/{ticket.ticket_name}.png'
         
-        ticket.save()
+        for i in range(order.quantity):
+            unique_key=str(uuid.uuid4())+str(request.user.id)
+            unique_keys.append(unique_key)
+            ticket=Ticket.objects.create(user=request.user)
+            qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
+            qr.add_data(unique_key)
+            qr.make(fit=True)
+            img=qr.make_image(fill='black',back_color='white')
+            ticket.ticket_name=f'{order.offer.name}_{i+1} '
+            qrcode_path=f'media/qrcode/{ticket.ticket_name}.png'
+            img.save(qrcode_path)
+            ticket.qrcode_ticket=f'qrcode/{ticket.ticket_name}.png'
         
-        request.user.tickets.add(ticket) 
+            ticket.save()
+        
+            request.user.tickets.add(ticket) 
         
         
         
