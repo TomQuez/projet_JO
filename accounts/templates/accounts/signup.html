@@ -1,27 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>S'inscrire</h2>
+    <h2>Création d'un compte utilisateur</h2>
     <form action="" method="POST">
         {% csrf_token %}
-        <p>
-            <label for="username">Nom</label>
-            <input type="text" name="username" id="username" placeholder="votre nom" required>
-        </p>
-        <p>
-            <label for="firstname">Prénom</label>
-            <input type="text" name="firstname" id="firstname" placeholder="votre prénom" required>
-        </p>
-        <p>
-            <label for="email">Votre email</label>
-            <input type="email" name="email" id="email" placeholder="exemple@truc.com" required >
-        </p>
-        <p>
-            <label for="password">Mot de passe : </label>
-            <input type="password" name="password" id="password" placeholder="8 caractères" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="8 caractères minimum comprenant un chiffre, une lettre minuscule et une lettre majuscule">
+        <fieldset class="border p-2">
+            <legend>Formulaire d'inscription</legend>
+        <div class="mb-3 col-sm-6">
+            <label for="username"class="form-label">Nom</label>
+            <input type="text" name="username" id="username" placeholder="votre nom" required class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="firstname" class="form-label">Prénom</label>
+            <input type="text" name="firstname" id="firstname" placeholder="votre prénom" required class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="email" class="form-label">Votre email</label>
+            <input type="email" name="email" id="email" placeholder="exemple@truc.com" required class="form-control" >
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="password"  class="form-label">Mot de passe : </label>
+            <input type="password" name="password" id="password" placeholder="8 caractères" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="8 caractères minimum comprenant un chiffre, une lettre minuscule et une lettre majuscule" class="form-control">
+        </div>  
             
-        </p>
-        <input type="submit" value="S'inscrire">
+        <input type="submit" value="S'inscrire" class="btn btn-primary">
+    </fieldset>
     </form>
 
 

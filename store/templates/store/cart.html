@@ -25,20 +25,26 @@
 
 <form action="{% url 'checkout' %}" method="POST">
   {% csrf_token %}
-  <label for="name">Nom du titulaire de la carte bancaire :</label>
-  <input type="text" required>
+  <fieldset class="border p-2">
+    <legend>Paiement</legend>
+    <div class="mb-3 col-sm-6">
+  <label for="name" class="form-label">Nom du titulaire de la carte bancaire :</label>
+  <input type="text" required class="form-control">
+  </div>
+  <div class="mb-3 col-sm-6">
+  <label for="numeroCarte" class="form-label">Numéro de carte bancaire :</label>
+  <input type="text" id="numeroCarte" name="numeroCarte" inputmode="numeric" pattern="[0-9\s]{13,19}" placeholder="1234 5678 9012 3456" required class="form-control">
+</div>
+<div class="mb-3 col-sm-6">
+    <label for="validity" class="form-label">Date de fin de validité (MM/AA) :</label>
+  <input type="text" id="validity" name="validity" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/AA" required class="form-control">
 
-  <label for="numeroCarte">Numéro de carte bancaire :</label>
-  <input type="text" id="numeroCarte" name="numeroCarte" inputmode="numeric" pattern="[0-9\s]{13,19}" placeholder="1234 5678 9012 3456" required>
-    <label for="validity">Date de fin de validité (MM/AA) :</label>
-  <input type="text" id="validity" name="validity" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/AA" required>
+</div>
 
-
-
-  <button type="submit">Procéder au paiement</button>
-  
+  <button type="submit" class="btn btn-primary">Procéder au paiement</button>
+</fieldset>
 </form>
-<p><a href="{% url 'delete-cart' %}">Vider le panier</a></p>
+<a href="{% url 'delete-cart' %}" class="btn btn-primary col-sm-3" id="btn-empty-cart">Vider le panier</a>
 
 
 {% endblock %}

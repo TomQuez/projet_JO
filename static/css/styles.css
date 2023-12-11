@@ -41,3 +41,8 @@ li{
     text-decoration: none;
 }
 
+#btn-empty-cart{
+    display: block;
+    margin: 20px;
+    
+}
