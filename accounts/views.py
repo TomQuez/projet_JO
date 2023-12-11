@@ -25,6 +25,8 @@ def login_user(request):
         if user:
             login(request,user)
             return redirect('index')
+        else:
+            return render(request,'accounts/login.html',{'message':'Les informations de connexion sont incorrectes'})
         
     return render(request,'accounts/login.html')
 

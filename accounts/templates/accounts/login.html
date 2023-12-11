@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
+{% if message %}
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+
+{% endif %}
 
   
     <form action="" method="POST">
-        {% csrf_token %}
-        <p>
-            <label for="username">Votre email</label>
-            <input type="text" name="username" id="username" placeholder="L'email utilisé lors de la création de votre compte" required>
-        </p>
         
-        <p>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" placeholder="mot de passe" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
-        </p>
-        <input type="submit" value="Connexion">
+        {% csrf_token %}
+        <fieldset class="border p-2">
+            <legend>Connexion</legend>
+        <div class="mb-3 col-sm-6">
+            <label for="username" class="form-label">Votre email : </label>
+            <input type="text" name="username" id="username" placeholder="L'email utilisé lors de la création de votre compte" required class="form-control ">
+        </div>
+        
+        <div class="mb-3 col-sm-6">
+            <label for="password">Mot de passe : </label>
+            <input type="password" name="password" id="password" placeholder="mot de passe" required class="form-control" title="le mot de passe n'est pas conforme">
+       </div>
+        <input type="submit" value="Connexion" class="btn btn-primary">
+        </fieldset>
     </form>
 
 

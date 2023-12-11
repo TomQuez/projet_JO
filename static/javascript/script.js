@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const articleList = document.querySelector("#article-list");
   const offerList = document.querySelector("#offers-list");
+  let currentPath = window.location.pathname;
+  let navLinks = document.querySelectorAll("#nav-link");
+  console.log(navLinks);
+  console.log(currentPath);
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") == currentPath) {
+      link.classList.add("active");
+      console.log(link);
+    }
+  });
 
   function loadArticles() {
     fetch("get_blog_articles/")

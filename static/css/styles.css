@@ -1,9 +1,35 @@
-h1{
-    color: red;
+*{
+    margin: 0;
+    
 }
+
+
+h1{
+    background-color: #5f5757;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+    font-size: 4rem;
+
+}
+h2{
+    text-align: center;
+    padding: 30px;
+}
+
 ul{
     list-style: none;
 }
 li{
     list-style: none;
+}
+#nav-side{
+    background-color: #5f5757;
+    color: white;
+}
+
+#nav-link{
+    color: white;
+    text-decoration: none;
 }

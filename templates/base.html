@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La boutique de billets</title>
+    <title>La boutique de billets des J.O. de Paris 2024</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
+    
 
 </head>
 <body>
-    <h1>La boutique de billets</h1>
-    <div class="col-sm-2">
+    <h1>J.O. de Paris 2024</h1>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-2 " id="nav-side">
         {% block sidebar %}
-        <ul class="sidebar-nav">
-            <li><a href="{% url 'index' %}">Accueil</a></li>
-            <li><a href="{% url 'offers' %}">Nos offres de billets</a></li>
+        
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item"><a href="{% url 'index' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/white-home-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Accueil</a></li>
+            <li class="nav-item"><a href="{% url 'offers' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/ticket-simple-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Nos offres de billets</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
-            <li>Vous êtes connecté en tant que {{user.first_name}} {{user.last_name}} {{user.id}}</li>
-            <li><a href="{% url 'orders-paid' %}">Vos commandes</a></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/logout-2-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Déconnexion</a></li>
+            <li class="nav-item">Vous êtes connecté en tant que {{user.first_name}} {{user.last_name}} </li>
+            <li class="nav-item"><a href="{% url 'orders-paid' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/order-completed-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Vos commandes</a></li>
 
             {% else %}
-            <li>Pour acheter un billet, vous devez être inscrit et ensuite être connecté</li>
-            <li><a href="{% url 'login' %}">Connexion</a></li>
-            <li><a href="{% url 'signup' %}">S'inscrire</a></li>
+           
+            <li class="nav-item"><a href="{% url 'login' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/login-2-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Connexion</a></li>
+            <li class="nav-item"><a href="{% url 'signup' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/sign-up-application-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> S'inscrire</a></li>
+            <li class="nav-item">Pour acheter un billet, vous devez être inscrit et ensuite être connecté</li>
             {% endif %}
             {% if user.cart %}
 
-            <li><a href="{% url 'cart' %}">Votre panier ({{user.cart.orders.all|length}})</a></li>
+            <li><a href="{% url 'cart' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/cart-shopping-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Votre panier ({{user.cart.orders.all|length}})</a></li>
                 
                 
               
@@ -40,14 +47,16 @@
             
             
         </ul>
-
+       <hr>
         {% endblock %}
     </div>
-    
+    <div class="col-sm-10">
     {% block content %}
    
     {% endblock %}
-    
+    </div>
+    </div>
+</div>
     <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 </html>
