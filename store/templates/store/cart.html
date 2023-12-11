@@ -21,7 +21,16 @@
 
 
 {% endfor %}
-<p>Prix total du panier : {{total_price}} €</p>
+
+<div class="card mb-4 rounded-3 shadow-sm border-primary m-auto" style="width: 12rem;">
+  <div class="card-header py-3 text-bg-primary border-primary">
+    <h4 class="my-0 fw-normal">Prix total du panier</h4>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title pricing-card-title">{{total_price}} €</h2>
+    
+  </div>
+</div>
 
 <form action="{% url 'checkout' %}" method="POST">
   {% csrf_token %}

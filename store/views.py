@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.urls import reverse
 from .models import Offer,Blog_article,Cart,Order,Ticket
+import datetime
 from django.http import JsonResponse
 from django.db import transaction
 import uuid
@@ -119,18 +120,21 @@ def checkout(request):
         order.ordered=True
         order.offer.stock-=order.quantity
         order.offer.sales_number+=order.quantity
+        order.ordered_date=datetime.datetime.now()  
+        
         order.save()
         order.offer.save()
         
         for i in range(order.quantity):
             unique_key=str(uuid.uuid4())+str(request.user.id)
+            date=datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
             unique_keys.append(unique_key)
             ticket=Ticket.objects.create(user=request.user)
             qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=10,border=5)
             qr.add_data(unique_key)
             qr.make(fit=True)
             img=qr.make_image(fill='black',back_color='white')
-            ticket.ticket_name=f'{order.offer.name}_{i+1} '
+            ticket.ticket_name=f'{order.offer.name}_{i+1}_{date}'
             qrcode_path=f'media/qrcode/{ticket.ticket_name}.png'
             img.save(qrcode_path)
             ticket.qrcode_ticket=f'qrcode/{ticket.ticket_name}.png'
