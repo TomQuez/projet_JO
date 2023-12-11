@@ -3,7 +3,9 @@
     
 }
 
-
+body{
+    background-color: white;
+}
 h1{
     background-color: #5f5757;
     color: white;
@@ -11,6 +13,7 @@ h1{
     margin: 0;
     padding: 30px;
     font-size: 4rem;
+    font-weight: 900;
 
 }
 h2{
@@ -33,3 +36,8 @@ li{
     color: white;
     text-decoration: none;
 }
+#id-connexion{
+    color: white;
+    text-decoration: none;
+}
+

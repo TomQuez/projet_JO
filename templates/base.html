@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <h1>J.O. de Paris 2024</h1>
+    <h1 class="animate-character">J.O. de Paris 2024</h1>
     <div class="container-fluid">
     <div class="row">
     <div class="col-sm-2 " id="nav-side">
@@ -25,7 +25,7 @@
             <li class="nav-item"><a href="{% url 'offers' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/ticket-simple-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Nos offres de billets</a></li>
             {% if user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'logout' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/logout-2-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Déconnexion</a></li>
-            <li class="nav-item">Vous êtes connecté en tant que {{user.first_name}} {{user.last_name}} </li>
+            <li class="nav-item nav-link " id="id-connexion"><img src="{% static 'icons/stick-man-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Vous êtes connecté en tant que {{user.first_name}} {{user.last_name}} </li>
             <li class="nav-item"><a href="{% url 'orders-paid' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/order-completed-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Vos commandes</a></li>
 
             {% else %}
