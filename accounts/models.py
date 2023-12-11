@@ -22,11 +22,13 @@ class CustomUserManager(BaseUserManager):
         if not any(char.isupper() for char in password):
             raise ValueError("le mot de passe doit contenir au moins une majuscule")
         email=self.normalize_email(email)
+        
         user=self.model(email=email,**kwargs)
         
         user.set_password(password) 
         user.save()
         return user
+        
     
     def create_superuser(self,email,password,**kwargs):
         kwargs["is_staff"]=True
