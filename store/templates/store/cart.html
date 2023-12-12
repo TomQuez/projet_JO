@@ -35,6 +35,7 @@
 <form action="{% url 'checkout' %}" method="POST">
   {% csrf_token %}
   <fieldset class="border p-2">
+    <p>Aucun paiement ne sera réellement effectué, c'est une simulation pour servir un projet de fin d'étude</p>
     <legend>Paiement</legend>
     <div class="mb-3 col-sm-6">
   <label for="name" class="form-label">Nom du titulaire de la carte bancaire :</label>

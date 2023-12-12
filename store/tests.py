@@ -51,4 +51,71 @@ class CartTest(TestCase):
     def test_cart_model_fields(self):
         self.assertEqual(self.cart.user,self.user)
        
+class TicketTest(TestCase):
+    def setUp(self):
+        self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
+        self.ticket=Ticket.objects.create(user=self.user)
+    
+    def test_ticket_model_fields(self):
+        self.assertEqual(self.ticket.user,self.user)
         
+class IndexViewTest(TestCase):
+    
+        
+    def test_index_view(self):
+        response=self.client.get(reverse('index'))
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'store/index.html')
+        
+class OffersViewTest(TestCase):
+    def setUp(self):
+        self.offer=Offer.objects.create(name='test',slug='test',price=10.0,stock=10,description='test',sales_number=0)
+        
+    def test_offers_view(self):
+        response=self.client.get(reverse('offers'))
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'store/offers.html')
+        self.assertIn('offers',response.context)
+        
+class CheckoutViewTest(TestCase):
+    def setUp(self):
+        self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
+        self.offer=Offer.objects.create(name='test',slug='test',price=10.0,stock=10,description='test',sales_number=0)
+        self.order=Order.objects.create(user=self.user,offer=self.offer,quantity=1)
+        self.cart=Cart.objects.create(user=self.user)
+        
+        self.ticket=Ticket.objects.create(user=self.user)
+        
+    def test_checkout_view(self):
+        self.client.login(username='test@example.fr',password='Password1234')
+        
+        response=self.client.get(reverse('checkout'))
+        
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'store/checkout.html')
+        self.assertTrue(Ticket.objects.filter(user=self.user).exists())
+        self.assertTrue(Order.objects.filter(user=self.user).exists())
+        self.assertFalse(Cart.objects.filter(user=self.user).exists())
+        
+        
+class DeleteCartViewTest(TestCase):
+    def setUp(self):
+        self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
+        self.cart=Cart.objects.create(user=self.user)
+        
+    def test_delete_cart_view(self):
+        self.client.login(username='test@example.fr', password='Password1234')
+        response=self.client.get(reverse('delete-cart'))
+        self.assertFalse(Cart.objects.filter(user=self.user).exists())
+        
+class OrdersPaidViewTest(TestCase):
+    def setUp(self):
+        self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
+        self.ticket=Ticket.objects.create(user=self.user)
+
+    def test_orders_paid_view(self):
+        self.client.login(username='test@example.fr',password='Password1234')
+        response=self.client.get(reverse('orders-paid'))
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'store/orders_paid.html')
+        self.assertTrue(Ticket.objects.filter(user=self.user).exists())

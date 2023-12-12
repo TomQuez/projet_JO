@@ -111,7 +111,7 @@ def cart(request):
 def checkout(request):
     cart=get_object_or_404(Cart,user=request.user)
     unique_keys=[]
-    unique_qrcode=[]
+    
     
     for order in cart.orders.all():
         
