@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import get_user_model,login,logout,authenticate
+import time
 
 User=get_user_model()
 # Create your views here.
@@ -21,6 +22,7 @@ def login_user(request):
     if request.method=='POST':
         name=request.POST.get('username')
         password=request.POST.get('password')
+        time.sleep(1)
         user=authenticate(username=name,password=password)
         if user:
             login(request,user)
