@@ -4,8 +4,11 @@ import time
 
 
 User=get_user_model()
-# Create your views here.
+
 def signup(request):
+    
+    """Vue qui permet à un utilisateur de s'inscrire."""
+    
     if request.method=='POST':
         name=request.POST.get('username')
         password=request.POST.get('password')
@@ -20,6 +23,9 @@ def signup(request):
     return render(request,'accounts/signup.html')
 
 def login_user(request):
+    
+    """Vue qui permet à un utilisateur de se connecter."""
+    
     if request.method=='POST':
         name=request.POST.get('username')
         password=request.POST.get('password')
@@ -36,6 +42,9 @@ def login_user(request):
 
 
 def logout_user(request):
+    
+    
+    """Vue qui permet à un utilisateur de se déconnecter."""
     
     
     logout(request)

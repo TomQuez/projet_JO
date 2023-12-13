@@ -5,6 +5,9 @@ from shop.settings import AUTH_USER_MODEL
 
 # Create your models here.
 class Offer(models.Model):
+    
+    """Modèle représentant une offre de billet pour les J.O. de Paris 2024. les administrateurs peuvent créer, modifier et supprimer des offres."""
+    
     name=models.CharField(max_length=128)
     slug=models.SlugField(max_length=128)
     price=models.FloatField(default=0.0)
@@ -23,6 +26,9 @@ class Offer(models.Model):
         ordering=['name']
     
 class Blog_article(models.Model):
+    
+    """Modèle représentant un article de blog, destiné à être affiché sur la page d'accueil, pour présenter les J.O. de Paris 2024. Les administrateurs peuvent créer, modifier et supprimer des articles de blog."""
+    
     title=models.CharField(max_length=200)
     description=models.TextField()
     thumbnail=models.ImageField(upload_to="blog_article_images",blank=True,null=True)
@@ -35,6 +41,9 @@ class Blog_article(models.Model):
     
     
 class Order(models.Model):
+    
+    """Modèle destiné à représenter une commande. Les utilisateurs peuvent créer des commandes et les supprimer. La commande est créée lorsqu'un utilisateur ajoute une offre à son panier."""
+    
     user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
     offer=models.ForeignKey(Offer,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=1)
@@ -45,6 +54,9 @@ class Order(models.Model):
         return f'{self.offer.name} ({self.quantity})'
     
 class Cart(models.Model):
+    
+    """Modèle destiné à représenter le panier d'un utilisateur. Les utilisateurs peuvent créer, et supprimer leur panier."""
+    
     user=models.OneToOneField(AUTH_USER_MODEL,on_delete=models.CASCADE)
     orders=models.ManyToManyField(Order)
     
@@ -57,6 +69,9 @@ class Cart(models.Model):
         
 
 class Ticket(models.Model):
+    
+    """Modèle destiné à représenter un billet. Le billet physique qui sera controlé lors de l'évènement réel est un qr code.Un billet équivaut à un qr code. chaque qr code est généré grâce à une clé unique."""
+    
     user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
     qrcode_ticket=models.ImageField(upload_to="qrcode",blank=True,null=True)
     ticket_name=models.CharField(max_length=200)

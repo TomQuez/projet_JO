@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Votre panier</h2>
-
+<!-- Affiche les différentes commandes présentes dans le panier de l'utilisateur -->
 {% for order in orders %}
 <div class="card m-auto my-2" style="width: 18rem;">
     <img src="{{order.offer.thumbnail.url}}" class="card-img-top mt-3 p-2" alt="{{order.offer.name}}">
@@ -21,7 +21,7 @@
 
 
 {% endfor %}
-
+<!-- Affichage du prix total du panier -->
 <div class="card mb-4 rounded-3 shadow-sm border-primary m-auto" style="width: 12rem;">
   <div class="card-header py-3 text-bg-primary border-primary">
     <h4 class="my-0 fw-normal">Prix total du panier</h4>
@@ -31,7 +31,7 @@
     
   </div>
 </div>
-
+<!-- mock destiné à simuler le paiement de la commande par carte bancaire.Utilisation du jeton CSRF de Django pour sécuriser la procédure -->
 <form action="{% url 'checkout' %}" method="POST">
   {% csrf_token %}
   <fieldset class="border p-2">

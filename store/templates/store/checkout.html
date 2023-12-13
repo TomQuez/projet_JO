@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+<!-- Page servant à confirmer à l'utilisateur que la commande a bien été effectué sans difficulté. Affiche un lien vers la liste des commandes afin de pouvoir télécharger les billets. -->
 {% block content %}
 <h2>votre commande a été effectuée</h2>
 <p>Vous pouvez retrouver tous vos tickets dans l'onglet <a href="{% url 'orders-paid' %}">vos commandes</a> . Les tickets sont téléchargeables à tout moment.</p>

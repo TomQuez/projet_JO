@@ -7,7 +7,7 @@ from django.core.validators import RegexValidator
 
 class CustomUserManager(BaseUserManager):
     
-    
+    """Modèle qui gère la création d'un utilisateur."""
    
     
     def create_user(self,email,password,**kwargs):
@@ -40,6 +40,8 @@ class CustomUserManager(BaseUserManager):
 
     
 class Shopper(AbstractUser):
+    
+    """Modèle qui définit un utilisateur."""
   
     id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
 

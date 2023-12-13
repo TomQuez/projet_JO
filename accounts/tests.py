@@ -5,6 +5,9 @@ from store.models import Ticket
 from django.urls import reverse
 # Create your tests here.
 class CustomUserManagerTest(TestCase):
+    
+    """Teste le modèle CustomUserManager."""
+    
     def setUp(self):
         self.user_manager=get_user_model().objects
         
@@ -24,6 +27,9 @@ class CustomUserManagerTest(TestCase):
             
             
 class ShopperTest(TestCase):
+    
+    """Teste le modèle Shopper."""
+    
     def setUp(self):
         self.user_data={
             'email':'test@example.fr',
@@ -47,6 +53,9 @@ class ShopperTest(TestCase):
 
         
 class SignupViewTest(TestCase):
+    
+    """Teste la vue signup."""
+    
     def test_signup_view(self):
         data={
             'username':'test',
@@ -63,6 +72,9 @@ class SignupViewTest(TestCase):
         self.assertTrue(user.is_authenticated)
         
 class LoginViewTest(TestCase):
+    
+    """Teste la vue login."""
+    
     def setUp(self):
         self.user=get_user_model().objects.create_user(username='test',                 password='TestPassword1234',email='test@example.fr',)
         
@@ -88,6 +100,9 @@ class LoginViewTest(TestCase):
         self.assertIsNone(user)
         
 class LogoutViewTest(TestCase):
+    
+    """Teste la vue logout."""
+    
     def setUp(self):
         self.user=get_user_model().objects.create_user( username='test',                 password='TestPassword1234',
         email='test@example.fr',

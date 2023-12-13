@@ -5,6 +5,9 @@ from accounts.models import Shopper
 
 # Create your tests here.
 class OfferModelTest(TestCase):
+    
+    """Teste le modèle Offer."""
+    
     def setUp(self):
         self.offer=Offer.objects.create(name='test',slug='test',price=10.0,stock=10,description='test',sales_number=0)
         
@@ -22,6 +25,9 @@ class OfferModelTest(TestCase):
         
         
 class BlogArticleTest(TestCase):
+    
+    """Teste le modèle Blog_article."""
+    
     def setUp(self):
         self.article=Blog_article.objects.create(title='test',description='test')
         
@@ -43,6 +49,9 @@ class OrderTest(TestCase):
         
 
 class CartTest(TestCase):
+    
+    """Teste le modèle Cart."""
+    
     def setUp(self):
        
         self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
@@ -52,6 +61,9 @@ class CartTest(TestCase):
         self.assertEqual(self.cart.user,self.user)
        
 class TicketTest(TestCase):
+    
+    """Teste le modèle Ticket."""
+    
     def setUp(self):
         self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
         self.ticket=Ticket.objects.create(user=self.user)
@@ -60,6 +72,9 @@ class TicketTest(TestCase):
         self.assertEqual(self.ticket.user,self.user)
         
 class IndexViewTest(TestCase):
+    
+    
+    """Teste la vue index."""
     
         
     def test_index_view(self):
@@ -78,6 +93,9 @@ class OffersViewTest(TestCase):
         self.assertIn('offers',response.context)
         
 class CheckoutViewTest(TestCase):
+    
+    """Teste la vue checkout."""
+    
     def setUp(self):
         self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
         self.offer=Offer.objects.create(name='test',slug='test',price=10.0,stock=10,description='test',sales_number=0)
@@ -99,6 +117,9 @@ class CheckoutViewTest(TestCase):
         
         
 class DeleteCartViewTest(TestCase):
+    
+    """Teste la vue delete_cart."""
+    
     def setUp(self):
         self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
         self.cart=Cart.objects.create(user=self.user)
@@ -109,6 +130,9 @@ class DeleteCartViewTest(TestCase):
         self.assertFalse(Cart.objects.filter(user=self.user).exists())
         
 class OrdersPaidViewTest(TestCase):
+    
+    """Teste la vue orders_paid."""
+    
     def setUp(self):
         self.user=Shopper.objects.create_user(username='testUser',password='Password1234',email='test@example.fr',)
         self.ticket=Ticket.objects.create(user=self.user)

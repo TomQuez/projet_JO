@@ -33,7 +33,6 @@ urlpatterns = [
     path('offers/<str:slug>/',offer_detail,name='offer-detail'),
     path('offers/<str:slug>/add-to-cart/',add_to_cart,name='add-to-cart'),
     path('cart/',cart,name='cart'),
-    # path('cart/create-checkout-session/',create_checkout_session,name='create-checkout-session'),
     path('cart/delete/',delete_cart,name='delete-cart'),
     path('checkout/',checkout,name='checkout'),
     path('orders-paid/',orders_paid,name='orders-paid')

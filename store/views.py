@@ -12,9 +12,15 @@ import qrcode
 
 
 def index(request):
+    
+    """Vue de la page d'accueil, qui affiche les articles de blog."""
+    
     return render(request,'store/index.html')
 
 def get_blog_articles(request):
+    
+    """Vue qui renvoie les articles de blog au format JSON, afin qu'il soit récupéré par le code javascript de façon dynamique."""
+    
     blog_articles=Blog_article.objects.all()
     data=[]
     for article in blog_articles:
@@ -30,6 +36,9 @@ def get_blog_articles(request):
     return JsonResponse(context)
 
 def offers(request):
+    
+    """Vue qui affiche les offres de billets vendues sur le site."""
+    
     offers=Offer.objects.all()
     context={
         'offers':offers,
@@ -37,6 +46,9 @@ def offers(request):
     return render(request,'store/offers.html',context)
 
 def get_offers_data(request):
+    
+    """Vue qui renvoie les offres de billets au format JSON, afin qu'il soit récupéré par le code javascript de façon dynamique."""
+    
     offers=Offer.objects.all()
     data=[]
     for offer in offers:
@@ -56,6 +68,9 @@ def get_offers_data(request):
     return JsonResponse(context)
 
 def offer_detail(request,slug):
+    
+    """Vue qui affiche les détails d'une offre de billet. c'est sur cette page que l'utilisateur peut cliquer sur le lien pour ajouter l'offre à son panier."""
+    
     offer=get_object_or_404(Offer,slug=slug)
     context={
         'offer':offer,
@@ -64,6 +79,9 @@ def offer_detail(request,slug):
 
 
 def add_to_cart(request,slug):
+    
+    """Vue qui ajoute une offre de billet au panier de l'utilisateur."""
+    
     user=request.user
     offer=get_object_or_404(Offer,slug=slug)
     cart, _ =Cart.objects.get_or_create(user=user)
@@ -80,6 +98,9 @@ def add_to_cart(request,slug):
     
     
 def cart(request):
+    
+    """Vue qui affiche le panier de l'utilisateur."""
+    
     
     cart=get_object_or_404(Cart,user=request.user)
     total_price=0
@@ -101,14 +122,12 @@ def cart(request):
     
     return render(request,'store/cart.html',context=context)
 
-# def create_checkout_session(request):
-#     if cart:=request.user.cart:
-#         cart.ordered()
-      
-    
-#     return redirect('index')
+
 @transaction.atomic
 def checkout(request):
+    
+    """Vue qui permet à l'utilisateur de passer commande. Lorsque l'utilisateur passe commande, un ticket est créé pour chaque billet acheté, et un QR code est généré pour chaque ticket."""
+    
     cart=get_object_or_404(Cart,user=request.user)
     unique_keys=[]
     
@@ -151,6 +170,9 @@ def checkout(request):
     return render(request,'store/checkout.html',context={})
 
 def delete_cart(request):
+    
+    """Vue qui supprime le panier de l'utilisateur."""
+    
     if cart := request.user.cart:
         
         cart.delete()   
@@ -159,6 +181,9 @@ def delete_cart(request):
     return redirect('index')
 
 def orders_paid(request):
+    
+    """Vue qui affiche les billets achetés par l'utilisateur."""
+    
     tickets=request.user.tickets.all()
     context={
         'tickets':tickets,
