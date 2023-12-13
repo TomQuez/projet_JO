@@ -21,6 +21,10 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("le mot de passe doit contenir au moins une minuscule")
         if not any(char.isupper() for char in password):
             raise ValueError("le mot de passe doit contenir au moins une majuscule")
+        if not any(char.isdigit() for char in password):
+            raise ValueError("le mot de passe doit contenir au moins un chiffre")
+        if not any(char in ["@","$","#","%","&","*"] for char in password):
+            raise ValueError("le mot de passe doit contenir au moins un caractère spécial")
         email=self.normalize_email(email)
         
         user=self.model(email=email,**kwargs)

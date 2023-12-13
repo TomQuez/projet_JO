@@ -21,7 +21,9 @@
         </div>
         <div class="mb-3 col-sm-6">
             <label for="password"  class="form-label">Mot de passe : </label>
-            <input type="password" name="password" id="password" placeholder="8 caractères" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="8 caractères minimum comprenant un chiffre, une lettre minuscule et une lettre majuscule" class="form-control">
+            
+            <input type="password" name="password" id="password" placeholder="8 caractères minimum" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#%&*])[A-Za-z\d@$#%&*]{8,}$" title="8 caractères minimum comprenant une minuscule, une majuscule, un chiffre et un caractère spécial (@, $, #, %, &, *)" class="form-control">
+
         </div>  
             
         <input type="submit" value="S'inscrire" class="btn btn-primary">
