@@ -1,0 +1,1241 @@
+<!doctype html>
+<html class="no-js" lang="[fr]" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="store.migrations package" href="store.migrations.html" /><link rel="prev" title="shop package" href="shop.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>store package - Projet_JO_Doc_Tech V1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Projet_JO_Doc_Tech V1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Projet_JO_Doc_Tech V1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">projet_JO</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of projet_JO</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="accounts.html">accounts package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of accounts package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.migrations.html">accounts.migrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shop.html">shop package</a></li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">store package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of store package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html">store.migrations package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="store-package">
+<h1>store package<a class="headerlink" href="#store-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="store.migrations.html">store.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0001_initial">store.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0002_blog_article">store.migrations.0002_blog_article module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0002_blog_article.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0002_blog_article.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0002_blog_article.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0003_alter_offer_options">store.migrations.0003_alter_offer_options module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0003_alter_offer_options.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0003_alter_offer_options.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0003_alter_offer_options.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0004_order">store.migrations.0004_order module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0004_order.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0004_order.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0004_order.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0005_order_ordered_date_cart">store.migrations.0005_order_ordered_date_cart module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0005_order_ordered_date_cart.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0005_order_ordered_date_cart.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0005_order_ordered_date_cart.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0006_offer_slug">store.migrations.0006_offer_slug module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0006_offer_slug.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0006_offer_slug.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0006_offer_slug.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0007_alter_offer_slug">store.migrations.0007_alter_offer_slug module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0007_alter_offer_slug.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0007_alter_offer_slug.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0007_alter_offer_slug.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0008_ticket">store.migrations.0008_ticket module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0008_ticket.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0008_ticket.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0008_ticket.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations.0009_ticket_ticket_name">store.migrations.0009_ticket_ticket_name module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.migrations.html#store.migrations.0009_ticket_ticket_name.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0009_ticket_ticket_name.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.migrations.html#store.migrations.0009_ticket_ticket_name.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="store.migrations.html#module-store.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-store.admin">
+<span id="store-admin-module"></span><h2>store.admin module<a class="headerlink" href="#module-store.admin" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-store.apps">
+<span id="store-apps-module"></span><h2>store.apps module<a class="headerlink" href="#module-store.apps" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.apps.StoreConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.apps.</span></span><span class="sig-name descname"><span class="pre">StoreConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/apps.html#StoreConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.apps.StoreConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/applications/#django.apps.AppConfig" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.apps.StoreConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#store.apps.StoreConfig.default_auto_field" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.apps.StoreConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'store'</span></em><a class="headerlink" href="#store.apps.StoreConfig.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-store.forms">
+<span id="store-forms-module"></span><h2>store.forms module<a class="headerlink" href="#module-store.forms" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-store.models">
+<span id="store-models-module"></span><h2>store.models module<a class="headerlink" href="#module-store.models" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Blog_article">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Blog_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Blog_article"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Blog_article" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">store_blog_article</span></code></p>
+<p>Modèle représentant un article de blog, destiné à être affiché sur la page d'accueil, pour présenter les J.O. de Paris 2024. Les administrateurs peuvent créer, modifier et supprimer des articles de blog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><em>BigAutoField</em></a>) -- Primary key: ID</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><em>CharField</em></a>) -- Title</p></li>
+<li><p><strong>description</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.TextField" title="(in Django v5.0)"><em>TextField</em></a>) -- Description</p></li>
+<li><p><strong>thumbnail</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><em>ImageField</em></a>) -- Thumbnail</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Blog_article.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Blog_article.DoesNotExist" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.ObjectDoesNotExist" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Blog_article.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Blog_article.MultipleObjectsReturned" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.MultipleObjectsReturned" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Blog_article.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#store.models.Blog_article.description" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.TextField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextField</span></code></a></p>
+<p>Description</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.models.Blog_article.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Blog_article.get_absolute_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Blog_article.get_absolute_url" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Blog_article.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Blog_article.id" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Blog_article.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Blog_article.objects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Blog_article.thumbnail">
+<span class="sig-name descname"><span class="pre">thumbnail</span></span><a class="headerlink" href="#store.models.Blog_article.thumbnail" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageField</span></code></a></p>
+<p>Thumbnail</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Blog_article.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#store.models.Blog_article.title" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Title</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Cart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Cart" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">store_cart</span></code></p>
+<p>Modèle destiné à représenter le panier d'un utilisateur. Les utilisateurs peuvent créer, et supprimer leur panier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><em>BigAutoField</em></a>) -- Primary key: ID</p>
+</dd>
+</dl>
+<p>Relationship fields:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.OneToOneField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneField</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a>) -- User (related name: <a class="reference internal" href="accounts.html#accounts.models.Shopper.cart" title="accounts.models.Shopper.cart"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cart</span></code></a>)</p></li>
+<li><p><strong>orders</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> to <a class="reference internal" href="#store.models.Order" title="store.models.Order"><code class="xref py py-class docutils literal notranslate"><span class="pre">Order</span></code></a>) -- Orders (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">cart</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Cart.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Cart.DoesNotExist" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.ObjectDoesNotExist" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Cart.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Cart.MultipleObjectsReturned" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.MultipleObjectsReturned" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.models.Cart.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Cart.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Cart.delete" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Cart.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Cart.id" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Cart.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Cart.objects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Cart.orders">
+<span class="sig-name descname"><span class="pre">orders</span></span><a class="headerlink" href="#store.models.Cart.orders" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> to <a class="reference internal" href="#store.models.Order" title="store.models.Order"><code class="xref py py-class docutils literal notranslate"><span class="pre">Order</span></code></a></p>
+<p>Orders (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">cart</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Cart.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#store.models.Cart.user" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.OneToOneField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneField</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a></p>
+<p>User (related name: <a class="reference internal" href="accounts.html#accounts.models.Shopper.cart" title="accounts.models.Shopper.cart"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cart</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Cart.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#store.models.Cart.user_id" title="Link to this definition">#</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#store.models.Cart.user" title="store.models.Cart.user"><code class="xref py py-class docutils literal notranslate"><span class="pre">user</span></code></a> instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Offer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Offer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Offer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Offer" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">store_offer</span></code></p>
+<p>Modèle représentant une offre de billet pour les J.O. de Paris 2024. les administrateurs peuvent créer, modifier et supprimer des offres.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><em>BigAutoField</em></a>) -- Primary key: ID</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><em>CharField</em></a>) -- Name</p></li>
+<li><p><strong>slug</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.SlugField" title="(in Django v5.0)"><em>SlugField</em></a>) -- Slug</p></li>
+<li><p><strong>price</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.FloatField" title="(in Django v5.0)"><em>FloatField</em></a>) -- Price</p></li>
+<li><p><strong>stock</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><em>IntegerField</em></a>) -- Stock</p></li>
+<li><p><strong>description</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.TextField" title="(in Django v5.0)"><em>TextField</em></a>) -- Description</p></li>
+<li><p><strong>sales_number</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><em>IntegerField</em></a>) -- Sales number</p></li>
+<li><p><strong>thumbnail</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><em>ImageField</em></a>) -- Thumbnail</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>order</strong> (Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#store.models.Order" title="store.models.Order"><code class="xref py py-class docutils literal notranslate"><span class="pre">Order</span></code></a>) -- All orders of this offer (related name of <a class="reference internal" href="#store.models.Order.offer" title="store.models.Order.offer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">offer</span></code></a>)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Offer.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Offer.DoesNotExist" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.ObjectDoesNotExist" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Offer.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Offer.MultipleObjectsReturned" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.MultipleObjectsReturned" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#store.models.Offer.description" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.TextField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextField</span></code></a></p>
+<p>Description</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.models.Offer.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Offer.get_absolute_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Offer.get_absolute_url" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Offer.id" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#store.models.Offer.name" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Name</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Offer.objects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.order_set">
+<span class="sig-name descname"><span class="pre">order_set</span></span><a class="headerlink" href="#store.models.Offer.order_set" title="Link to this definition">#</a></dt>
+<dd><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#store.models.Order" title="store.models.Order"><code class="xref py py-class docutils literal notranslate"><span class="pre">Order</span></code></a></p>
+<p>All orders of this offer (related name of <a class="reference internal" href="#store.models.Order.offer" title="store.models.Order.offer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">offer</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#store.models.Offer.price" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.FloatField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatField</span></code></a></p>
+<p>Price</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.sales_number">
+<span class="sig-name descname"><span class="pre">sales_number</span></span><a class="headerlink" href="#store.models.Offer.sales_number" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Sales number</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><a class="headerlink" href="#store.models.Offer.slug" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.SlugField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SlugField</span></code></a></p>
+<p>Slug</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.stock">
+<span class="sig-name descname"><span class="pre">stock</span></span><a class="headerlink" href="#store.models.Offer.stock" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Stock</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Offer.thumbnail">
+<span class="sig-name descname"><span class="pre">thumbnail</span></span><a class="headerlink" href="#store.models.Offer.thumbnail" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageField</span></code></a></p>
+<p>Thumbnail</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Order">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Order" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">store_order</span></code></p>
+<p>Modèle destiné à représenter une commande. Les utilisateurs peuvent créer des commandes et les supprimer. La commande est créée lorsqu'un utilisateur ajoute une offre à son panier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><em>BigAutoField</em></a>) -- Primary key: ID</p></li>
+<li><p><strong>quantity</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><em>IntegerField</em></a>) -- Quantity</p></li>
+<li><p><strong>ordered</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BooleanField" title="(in Django v5.0)"><em>BooleanField</em></a>) -- Ordered</p></li>
+<li><p><strong>ordered_date</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.DateTimeField" title="(in Django v5.0)"><em>DateTimeField</em></a>) -- Ordered date</p></li>
+</ul>
+</dd>
+</dl>
+<p>Relationship fields:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a>) -- User (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">order</span></code>)</p></li>
+<li><p><strong>offer</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="#store.models.Offer" title="store.models.Offer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Offer</span></code></a>) -- Offer (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">order</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cart</strong> (Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> from <a class="reference internal" href="#store.models.Cart" title="store.models.Cart"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cart</span></code></a>) -- All carts of this order (related name of <a class="reference internal" href="#store.models.Cart.orders" title="store.models.Cart.orders"><code class="xref py py-attr docutils literal notranslate"><span class="pre">orders</span></code></a>)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Order.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Order.DoesNotExist" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.ObjectDoesNotExist" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Order.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Order.MultipleObjectsReturned" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.MultipleObjectsReturned" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.cart_set">
+<span class="sig-name descname"><span class="pre">cart_set</span></span><a class="headerlink" href="#store.models.Order.cart_set" title="Link to this definition">#</a></dt>
+<dd><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> from <a class="reference internal" href="#store.models.Cart" title="store.models.Cart"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cart</span></code></a></p>
+<p>All carts of this order (related name of <a class="reference internal" href="#store.models.Cart.orders" title="store.models.Cart.orders"><code class="xref py py-attr docutils literal notranslate"><span class="pre">orders</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Order.id" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Order.objects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.offer">
+<span class="sig-name descname"><span class="pre">offer</span></span><a class="headerlink" href="#store.models.Order.offer" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="#store.models.Offer" title="store.models.Offer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Offer</span></code></a></p>
+<p>Offer (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">order</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.offer_id">
+<span class="sig-name descname"><span class="pre">offer_id</span></span><a class="headerlink" href="#store.models.Order.offer_id" title="Link to this definition">#</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#store.models.Order.offer" title="store.models.Order.offer"><code class="xref py py-class docutils literal notranslate"><span class="pre">offer</span></code></a> instead.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.ordered">
+<span class="sig-name descname"><span class="pre">ordered</span></span><a class="headerlink" href="#store.models.Order.ordered" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BooleanField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanField</span></code></a></p>
+<p>Ordered</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.ordered_date">
+<span class="sig-name descname"><span class="pre">ordered_date</span></span><a class="headerlink" href="#store.models.Order.ordered_date" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.DateTimeField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DateTimeField</span></code></a></p>
+<p>Ordered date</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.quantity">
+<span class="sig-name descname"><span class="pre">quantity</span></span><a class="headerlink" href="#store.models.Order.quantity" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Quantity</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#store.models.Order.user" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a></p>
+<p>User (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">order</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Order.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#store.models.Order.user_id" title="Link to this definition">#</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#store.models.Order.user" title="store.models.Order.user"><code class="xref py py-class docutils literal notranslate"><span class="pre">user</span></code></a> instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.models.Ticket">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.models.</span></span><span class="sig-name descname"><span class="pre">Ticket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/models.html#Ticket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.models.Ticket" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">store_ticket</span></code></p>
+<p>Modèle destiné à représenter un billet. Le billet physique qui sera controlé lors de l'évènement réel est un qr code.Un billet équivaut à un qr code. chaque qr code est généré grâce à une clé unique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><em>BigAutoField</em></a>) -- Primary key: ID</p></li>
+<li><p><strong>qrcode_ticket</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><em>ImageField</em></a>) -- Qrcode ticket</p></li>
+<li><p><strong>ticket_name</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><em>CharField</em></a>) -- Ticket name</p></li>
+</ul>
+</dd>
+</dl>
+<p>Relationship fields:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>user</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a>) -- User (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">ticket</span></code>)</p>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shopper</strong> (Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> from <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a>) -- All utilisateurs of this ticket (related name of <a class="reference internal" href="accounts.html#accounts.models.Shopper.tickets" title="accounts.models.Shopper.tickets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tickets</span></code></a>)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Ticket.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#store.models.Ticket.DoesNotExist" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.ObjectDoesNotExist" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="store.models.Ticket.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#store.models.Ticket.MultipleObjectsReturned" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/exceptions/#django.core.exceptions.MultipleObjectsReturned" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#store.models.Ticket.id" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#store.models.Ticket.objects" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.qrcode_ticket">
+<span class="sig-name descname"><span class="pre">qrcode_ticket</span></span><a class="headerlink" href="#store.models.Ticket.qrcode_ticket" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ImageField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageField</span></code></a></p>
+<p>Qrcode ticket</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.shopper_set">
+<span class="sig-name descname"><span class="pre">shopper_set</span></span><a class="headerlink" href="#store.models.Ticket.shopper_set" title="Link to this definition">#</a></dt>
+<dd><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ManyToManyField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a> from <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a></p>
+<p>All utilisateurs of this ticket (related name of <a class="reference internal" href="accounts.html#accounts.models.Shopper.tickets" title="accounts.models.Shopper.tickets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tickets</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.ticket_name">
+<span class="sig-name descname"><span class="pre">ticket_name</span></span><a class="headerlink" href="#store.models.Ticket.ticket_name" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Ticket name</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#store.models.Ticket.user" title="Link to this definition">#</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="accounts.html#accounts.models.Shopper" title="accounts.models.Shopper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Shopper</span></code></a></p>
+<p>User (related name: <code class="xref py py-attr docutils literal notranslate"><span class="pre">ticket</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="store.models.Ticket.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#store.models.Ticket.user_id" title="Link to this definition">#</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#store.models.Ticket.user" title="store.models.Ticket.user"><code class="xref py py-class docutils literal notranslate"><span class="pre">user</span></code></a> instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-store.tests">
+<span id="store-tests-module"></span><h2>store.tests module<a class="headerlink" href="#module-store.tests" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.BlogArticleTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">BlogArticleTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#BlogArticleTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.BlogArticleTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste le modèle Blog_article.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.BlogArticleTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#BlogArticleTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.BlogArticleTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.BlogArticleTest.test_blog_article_model_fields">
+<span class="sig-name descname"><span class="pre">test_blog_article_model_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#BlogArticleTest.test_blog_article_model_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.BlogArticleTest.test_blog_article_model_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.CartTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">CartTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CartTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CartTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste le modèle Cart.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.CartTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CartTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CartTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.CartTest.test_cart_model_fields">
+<span class="sig-name descname"><span class="pre">test_cart_model_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CartTest.test_cart_model_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CartTest.test_cart_model_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.CheckoutViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">CheckoutViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CheckoutViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CheckoutViewTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste la vue checkout.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.CheckoutViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CheckoutViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CheckoutViewTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.CheckoutViewTest.test_checkout_view">
+<span class="sig-name descname"><span class="pre">test_checkout_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#CheckoutViewTest.test_checkout_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.CheckoutViewTest.test_checkout_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.DeleteCartViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">DeleteCartViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#DeleteCartViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.DeleteCartViewTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste la vue delete_cart.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.DeleteCartViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#DeleteCartViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.DeleteCartViewTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.DeleteCartViewTest.test_delete_cart_view">
+<span class="sig-name descname"><span class="pre">test_delete_cart_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#DeleteCartViewTest.test_delete_cart_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.DeleteCartViewTest.test_delete_cart_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.IndexViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">IndexViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#IndexViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.IndexViewTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste la vue index.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.IndexViewTest.test_index_view">
+<span class="sig-name descname"><span class="pre">test_index_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#IndexViewTest.test_index_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.IndexViewTest.test_index_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.OfferModelTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">OfferModelTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OfferModelTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OfferModelTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste le modèle Offer.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OfferModelTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OfferModelTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OfferModelTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OfferModelTest.test_offer_get_absolute_url">
+<span class="sig-name descname"><span class="pre">test_offer_get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OfferModelTest.test_offer_get_absolute_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OfferModelTest.test_offer_get_absolute_url" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OfferModelTest.test_offer_model_fields">
+<span class="sig-name descname"><span class="pre">test_offer_model_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OfferModelTest.test_offer_model_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OfferModelTest.test_offer_model_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.OffersViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">OffersViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OffersViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OffersViewTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OffersViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OffersViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OffersViewTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OffersViewTest.test_offers_view">
+<span class="sig-name descname"><span class="pre">test_offers_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OffersViewTest.test_offers_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OffersViewTest.test_offers_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.OrderTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">OrderTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrderTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrderTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OrderTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrderTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrderTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OrderTest.test_order_model_fields">
+<span class="sig-name descname"><span class="pre">test_order_model_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrderTest.test_order_model_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrderTest.test_order_model_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.OrdersPaidViewTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">OrdersPaidViewTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrdersPaidViewTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrdersPaidViewTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste la vue orders_paid.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OrdersPaidViewTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrdersPaidViewTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrdersPaidViewTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.OrdersPaidViewTest.test_orders_paid_view">
+<span class="sig-name descname"><span class="pre">test_orders_paid_view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#OrdersPaidViewTest.test_orders_paid_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.OrdersPaidViewTest.test_orders_paid_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="store.tests.TicketTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">store.tests.</span></span><span class="sig-name descname"><span class="pre">TicketTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#TicketTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.TicketTest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#django.test.TestCase" title="(in Django v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a></p>
+<p>Teste le modèle Ticket.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.TicketTest.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#TicketTest.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.TicketTest.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="store.tests.TicketTest.test_ticket_model_fields">
+<span class="sig-name descname"><span class="pre">test_ticket_model_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/tests.html#TicketTest.test_ticket_model_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.tests.TicketTest.test_ticket_model_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-store.views">
+<span id="store-views-module"></span><h2>store.views module<a class="headerlink" href="#module-store.views" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.add_to_cart">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">add_to_cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#add_to_cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.add_to_cart" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui ajoute une offre de billet au panier de l'utilisateur.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.cart">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.cart" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui affiche le panier de l'utilisateur.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.checkout">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">checkout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#checkout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.checkout" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui permet à l'utilisateur de passer commande. Lorsque l'utilisateur passe commande, un ticket est créé pour chaque billet acheté, et un QR code est généré pour chaque ticket.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.delete_cart">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">delete_cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#delete_cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.delete_cart" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui supprime le panier de l'utilisateur.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.get_blog_articles">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">get_blog_articles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#get_blog_articles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.get_blog_articles" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui renvoie les articles de blog au format JSON, afin qu'il soit récupéré par le code javascript de façon dynamique.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.get_offers_data">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">get_offers_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#get_offers_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.get_offers_data" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui renvoie les offres de billets au format JSON, afin qu'il soit récupéré par le code javascript de façon dynamique.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.index">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.index" title="Link to this definition">#</a></dt>
+<dd><p>Vue de la page d'accueil, qui affiche les articles de blog.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.offer_detail">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">offer_detail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#offer_detail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.offer_detail" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui affiche les détails d'une offre de billet. c'est sur cette page que l'utilisateur peut cliquer sur le lien pour ajouter l'offre à son panier.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.offers">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">offers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#offers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.offers" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui affiche les offres de billets vendues sur le site.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="store.views.orders_paid">
+<span class="sig-prename descclassname"><span class="pre">store.views.</span></span><span class="sig-name descname"><span class="pre">orders_paid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/store/views.html#orders_paid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#store.views.orders_paid" title="Link to this definition">#</a></dt>
+<dd><p>Vue qui affiche les billets achetés par l'utilisateur.</p>
+</dd></dl>
+
+</section>
+<section id="module-store">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-store" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="store.migrations.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">store.migrations package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="shop.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">shop package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Thomas Quezet
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">store package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-store.admin">store.admin module</a></li>
+<li><a class="reference internal" href="#module-store.apps">store.apps module</a><ul>
+<li><a class="reference internal" href="#store.apps.StoreConfig"><code class="docutils literal notranslate"><span class="pre">StoreConfig</span></code></a><ul>
+<li><a class="reference internal" href="#store.apps.StoreConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">StoreConfig.default_auto_field</span></code></a></li>
+<li><a class="reference internal" href="#store.apps.StoreConfig.name"><code class="docutils literal notranslate"><span class="pre">StoreConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-store.forms">store.forms module</a></li>
+<li><a class="reference internal" href="#module-store.models">store.models module</a><ul>
+<li><a class="reference internal" href="#store.models.Blog_article"><code class="docutils literal notranslate"><span class="pre">Blog_article</span></code></a><ul>
+<li><a class="reference internal" href="#store.models.Blog_article.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Blog_article.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Blog_article.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.description"><code class="docutils literal notranslate"><span class="pre">Blog_article.description</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.get_absolute_url"><code class="docutils literal notranslate"><span class="pre">Blog_article.get_absolute_url()</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.id"><code class="docutils literal notranslate"><span class="pre">Blog_article.id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.objects"><code class="docutils literal notranslate"><span class="pre">Blog_article.objects</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.thumbnail"><code class="docutils literal notranslate"><span class="pre">Blog_article.thumbnail</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Blog_article.title"><code class="docutils literal notranslate"><span class="pre">Blog_article.title</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.models.Cart"><code class="docutils literal notranslate"><span class="pre">Cart</span></code></a><ul>
+<li><a class="reference internal" href="#store.models.Cart.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Cart.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Cart.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.delete"><code class="docutils literal notranslate"><span class="pre">Cart.delete()</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.id"><code class="docutils literal notranslate"><span class="pre">Cart.id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.objects"><code class="docutils literal notranslate"><span class="pre">Cart.objects</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.orders"><code class="docutils literal notranslate"><span class="pre">Cart.orders</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.user"><code class="docutils literal notranslate"><span class="pre">Cart.user</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Cart.user_id"><code class="docutils literal notranslate"><span class="pre">Cart.user_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.models.Offer"><code class="docutils literal notranslate"><span class="pre">Offer</span></code></a><ul>
+<li><a class="reference internal" href="#store.models.Offer.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Offer.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Offer.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.description"><code class="docutils literal notranslate"><span class="pre">Offer.description</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.get_absolute_url"><code class="docutils literal notranslate"><span class="pre">Offer.get_absolute_url()</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.id"><code class="docutils literal notranslate"><span class="pre">Offer.id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.name"><code class="docutils literal notranslate"><span class="pre">Offer.name</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.objects"><code class="docutils literal notranslate"><span class="pre">Offer.objects</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.order_set"><code class="docutils literal notranslate"><span class="pre">Offer.order_set</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.price"><code class="docutils literal notranslate"><span class="pre">Offer.price</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.sales_number"><code class="docutils literal notranslate"><span class="pre">Offer.sales_number</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.slug"><code class="docutils literal notranslate"><span class="pre">Offer.slug</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.stock"><code class="docutils literal notranslate"><span class="pre">Offer.stock</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Offer.thumbnail"><code class="docutils literal notranslate"><span class="pre">Offer.thumbnail</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.models.Order"><code class="docutils literal notranslate"><span class="pre">Order</span></code></a><ul>
+<li><a class="reference internal" href="#store.models.Order.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Order.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Order.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.cart_set"><code class="docutils literal notranslate"><span class="pre">Order.cart_set</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.id"><code class="docutils literal notranslate"><span class="pre">Order.id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.objects"><code class="docutils literal notranslate"><span class="pre">Order.objects</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.offer"><code class="docutils literal notranslate"><span class="pre">Order.offer</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.offer_id"><code class="docutils literal notranslate"><span class="pre">Order.offer_id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.ordered"><code class="docutils literal notranslate"><span class="pre">Order.ordered</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.ordered_date"><code class="docutils literal notranslate"><span class="pre">Order.ordered_date</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.quantity"><code class="docutils literal notranslate"><span class="pre">Order.quantity</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.user"><code class="docutils literal notranslate"><span class="pre">Order.user</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Order.user_id"><code class="docutils literal notranslate"><span class="pre">Order.user_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.models.Ticket"><code class="docutils literal notranslate"><span class="pre">Ticket</span></code></a><ul>
+<li><a class="reference internal" href="#store.models.Ticket.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Ticket.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Ticket.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.id"><code class="docutils literal notranslate"><span class="pre">Ticket.id</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.objects"><code class="docutils literal notranslate"><span class="pre">Ticket.objects</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.qrcode_ticket"><code class="docutils literal notranslate"><span class="pre">Ticket.qrcode_ticket</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.shopper_set"><code class="docutils literal notranslate"><span class="pre">Ticket.shopper_set</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.ticket_name"><code class="docutils literal notranslate"><span class="pre">Ticket.ticket_name</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.user"><code class="docutils literal notranslate"><span class="pre">Ticket.user</span></code></a></li>
+<li><a class="reference internal" href="#store.models.Ticket.user_id"><code class="docutils literal notranslate"><span class="pre">Ticket.user_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-store.tests">store.tests module</a><ul>
+<li><a class="reference internal" href="#store.tests.BlogArticleTest"><code class="docutils literal notranslate"><span class="pre">BlogArticleTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.BlogArticleTest.setUp"><code class="docutils literal notranslate"><span class="pre">BlogArticleTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.BlogArticleTest.test_blog_article_model_fields"><code class="docutils literal notranslate"><span class="pre">BlogArticleTest.test_blog_article_model_fields()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.CartTest"><code class="docutils literal notranslate"><span class="pre">CartTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.CartTest.setUp"><code class="docutils literal notranslate"><span class="pre">CartTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.CartTest.test_cart_model_fields"><code class="docutils literal notranslate"><span class="pre">CartTest.test_cart_model_fields()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.CheckoutViewTest"><code class="docutils literal notranslate"><span class="pre">CheckoutViewTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.CheckoutViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">CheckoutViewTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.CheckoutViewTest.test_checkout_view"><code class="docutils literal notranslate"><span class="pre">CheckoutViewTest.test_checkout_view()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.DeleteCartViewTest"><code class="docutils literal notranslate"><span class="pre">DeleteCartViewTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.DeleteCartViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">DeleteCartViewTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.DeleteCartViewTest.test_delete_cart_view"><code class="docutils literal notranslate"><span class="pre">DeleteCartViewTest.test_delete_cart_view()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.IndexViewTest"><code class="docutils literal notranslate"><span class="pre">IndexViewTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.IndexViewTest.test_index_view"><code class="docutils literal notranslate"><span class="pre">IndexViewTest.test_index_view()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.OfferModelTest"><code class="docutils literal notranslate"><span class="pre">OfferModelTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.OfferModelTest.setUp"><code class="docutils literal notranslate"><span class="pre">OfferModelTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.OfferModelTest.test_offer_get_absolute_url"><code class="docutils literal notranslate"><span class="pre">OfferModelTest.test_offer_get_absolute_url()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.OfferModelTest.test_offer_model_fields"><code class="docutils literal notranslate"><span class="pre">OfferModelTest.test_offer_model_fields()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.OffersViewTest"><code class="docutils literal notranslate"><span class="pre">OffersViewTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.OffersViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">OffersViewTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.OffersViewTest.test_offers_view"><code class="docutils literal notranslate"><span class="pre">OffersViewTest.test_offers_view()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.OrderTest"><code class="docutils literal notranslate"><span class="pre">OrderTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.OrderTest.setUp"><code class="docutils literal notranslate"><span class="pre">OrderTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.OrderTest.test_order_model_fields"><code class="docutils literal notranslate"><span class="pre">OrderTest.test_order_model_fields()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.OrdersPaidViewTest"><code class="docutils literal notranslate"><span class="pre">OrdersPaidViewTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.OrdersPaidViewTest.setUp"><code class="docutils literal notranslate"><span class="pre">OrdersPaidViewTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.OrdersPaidViewTest.test_orders_paid_view"><code class="docutils literal notranslate"><span class="pre">OrdersPaidViewTest.test_orders_paid_view()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store.tests.TicketTest"><code class="docutils literal notranslate"><span class="pre">TicketTest</span></code></a><ul>
+<li><a class="reference internal" href="#store.tests.TicketTest.setUp"><code class="docutils literal notranslate"><span class="pre">TicketTest.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#store.tests.TicketTest.test_ticket_model_fields"><code class="docutils literal notranslate"><span class="pre">TicketTest.test_ticket_model_fields()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-store.views">store.views module</a><ul>
+<li><a class="reference internal" href="#store.views.add_to_cart"><code class="docutils literal notranslate"><span class="pre">add_to_cart()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.cart"><code class="docutils literal notranslate"><span class="pre">cart()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.checkout"><code class="docutils literal notranslate"><span class="pre">checkout()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.delete_cart"><code class="docutils literal notranslate"><span class="pre">delete_cart()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.get_blog_articles"><code class="docutils literal notranslate"><span class="pre">get_blog_articles()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.get_offers_data"><code class="docutils literal notranslate"><span class="pre">get_offers_data()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.offer_detail"><code class="docutils literal notranslate"><span class="pre">offer_detail()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.offers"><code class="docutils literal notranslate"><span class="pre">offers()</span></code></a></li>
+<li><a class="reference internal" href="#store.views.orders_paid"><code class="docutils literal notranslate"><span class="pre">orders_paid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-store">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=ee0ff87d"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>
