@@ -29,7 +29,7 @@ def login_user(request):
     if request.method=='POST':
         name=request.POST.get('username')
         password=request.POST.get('password')
-        time.sleep(1)
+        time.sleep(3)
         user=authenticate(username=name,password=password)
         if user:
             login(request,user)
