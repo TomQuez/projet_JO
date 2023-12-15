@@ -17,8 +17,8 @@ Les administrateurs ont accès à toutes les fonctionnalités, contrairement aux
 
 **Protection**
 ---------------
-Les injections SQL:
--------------------
+Les injections SQL et les attaques CSRF:
+-----------------------------------------
 En utilisant l'ORM de django et les jetons CSRF dans les formulaires, l'application est protégée contre ces actes malveillants.
 
 Force brute : 
