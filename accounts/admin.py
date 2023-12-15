@@ -4,5 +4,6 @@ from .models import Shopper
 
 class ShopperAdmin(admin.ModelAdmin):
     list_display   = ('last_name', 'first_name','email','is_staff','is_superuser','is_active')
+    list_filter    = ('is_staff','is_superuser','is_active','groups')
 
 admin.site.register(Shopper,ShopperAdmin)

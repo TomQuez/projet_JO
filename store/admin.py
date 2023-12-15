@@ -5,6 +5,7 @@ from store.models import Offer,Blog_article,Order,Cart,Ticket
 class OfferAdmin(admin.ModelAdmin):
     """Personnalisation de l'interface d'administration."""
     list_display   = ('name', 'price', 'stock','sales_number')
+    
 
 
 class Blog_articleAdmin(admin.ModelAdmin):
@@ -14,11 +15,13 @@ class Blog_articleAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     """Personnalisation de l'interface d'administration."""
     list_display   = ('user', 'offer', 'quantity','ordered','ordered_date')
+    list_filter    = ('ordered','ordered_date','user','offer')
     
     
 class TicketAdmin(admin.ModelAdmin):
     """Personnalisation de l'interface d'administration."""
     list_display   = ('user', 'ticket_name')
+    list_filter    = ('user','ticket_name')
 
 
 """Enregistre les modèles dans l'interface d'administration."""
