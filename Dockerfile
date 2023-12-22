@@ -24,10 +24,7 @@ COPY . /code
 
 ENV SECRET_KEY "CiQBOJ07hPiPUTbznv6GwpXEw1KdIUrMamouhGaH55akGbIct3"
 
-ENV DEBUG "True"
-ENV AWS_ACCESS_KEY_ID "AKIAUY4LX2J7DFDCW5PW"
-ENV AWS_SECRET_ACCESS_KEY "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"
-ENV AWS_STORAGE_BUCKET_NAME "django-media-4327"
+
 
 RUN python manage.py collectstatic --noinput
 
