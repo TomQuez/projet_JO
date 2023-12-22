@@ -6,16 +6,16 @@
 
 
 {% for ticket in tickets %}
-`<div class="card m-auto my-2" style="width: 24rem;">
-    <img src="{{ticket.qrcode_ticket.url}}" class="card-img-top mt-3 p-2" alt="qr_code {{ticket.id}}">
+<div class="card m-auto my-2" style="width: 24rem;">
+    <img src="https://django-media-4327.s3.eu-north-1.amazonaws.com/qrcode/{{ticket.ticket_name}}.png" class="card-img-top mt-3 p-2" alt="qr_code {{ticket.id}}">
     <div class="card-body">
       <h5 class="card-title">{{ticket.ticket_name}}</h5>
       <p class="card-text">Les tickets sont téléchargeables à tout moment</p>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="{{ticket.qrcode_ticket.url}}" download="qrcode_{{ticket.ticket_name}}">Télécharger le ticket </a></li>
+        <li class="list-group-item"><a href="https://django-media-4327.s3.eu-north-1.amazonaws.com/qrcode/{{ticket.ticket_name}}.png" download="qrcode_{{ticket.ticket_name}}">Télécharger le ticket </a></li>
     </ul>
       
-    </div>`;
+    </div>;
 </div>
 <p>Ces tickets ne sont pas de vrais tickets, ce sont des specimens pour servir un projet de fin d'étude.</p>
 {% endfor %}

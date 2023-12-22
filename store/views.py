@@ -6,6 +6,13 @@ from django.http import JsonResponse
 from django.db import transaction
 import uuid
 import qrcode
+from botocore.exceptions import NoCredentialsError
+import boto3
+import os
+from io import BytesIO
+
+from decouple import config
+from shop.settings import BASE_DIR, AWS_LOCATION,AWS_S3_CUSTOM_DOMAIN
 # Create your views here.
 
 
@@ -27,7 +34,7 @@ def get_blog_articles(request):
         object={
             'title':article.title,
             'description':article.description,
-            'thumbnail':article.thumbnail.url
+            'thumbnail':f'https://django-media-4327.s3.eu-north-1.amazonaws.com/media/{article.thumbnail.name}',
         }
         data.append(object)
     context={
@@ -59,7 +66,9 @@ def get_offers_data(request):
             'stock':offer.stock,
             'description':offer.description,
             'sales_number':offer.sales_number,
-            'thumbnail':offer.thumbnail.url
+            'thumbnail':f'https://django-media-4327.s3.eu-north-1.amazonaws.com/media/{offer.thumbnail.name}',
+            'thumbnail_url':offer.thumbnail.url,
+            'thumbnail_name':offer.thumbnail.name,
         }
         data.append(object)
     context={
@@ -131,6 +140,8 @@ def checkout(request):
     cart=get_object_or_404(Cart,user=request.user)
     unique_keys=[]
     
+    s3=boto3.client('s3',aws_access_key_id=config('AWS_ACCESS_KEY_ID'),aws_secret_access_key=config('AWS_SECRET_ACCESS_KEY'),region_name='eu-north-1')
+    
     
     for order in cart.orders.all():
         
@@ -153,12 +164,25 @@ def checkout(request):
             qr.add_data(unique_key)
             qr.make(fit=True)
             img=qr.make_image(fill='black',back_color='white')
-            ticket.ticket_name=f'{order.offer.name}_{i+1}_{date}'
+            ticket.ticket_name=f'{order.offer.slug}_{i+1}_{date}'[:50]
             qrcode_path=f'media/qrcode/{ticket.ticket_name}.png'
+            s3_key=f'qrcode/{ticket.ticket_name}.png'
             img.save(qrcode_path)
-            ticket.qrcode_ticket=f'qrcode/{ticket.ticket_name}.png'
-        
-            ticket.save()
+            
+            
+            ticket.qrcode_ticket=qrcode_path
+            ticket.save()   
+
+            try : 
+                s3.upload_file(
+                    Filename=qrcode_path,
+                    Bucket=config('AWS_STORAGE_BUCKET_NAME'),
+                    Key=s3_key,
+                    ExtraArgs={'ACL':'public-read'}
+                )
+            except Exception as e:
+                print(f'error uploading file : {e}' )    
+
         
             request.user.tickets.add(ticket) 
         

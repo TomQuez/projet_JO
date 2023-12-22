@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for projet-jo on 2023-12-19T10:26:51+01:00
+# fly.toml app configuration file generated for projet-jo-misty-dream-5250 on 2023-12-22T11:51:41+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "projet-jo"
+app = "projet-jo-misty-dream-5250"
 primary_region = "cdg"
 console_command = "/code/manage.py shell"
 

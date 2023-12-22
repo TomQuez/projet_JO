@@ -37,3 +37,5 @@ urlpatterns = [
     path('checkout/',checkout,name='checkout'),
     path('orders-paid/',orders_paid,name='orders-paid')
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+
