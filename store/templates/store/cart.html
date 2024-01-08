@@ -4,7 +4,7 @@
 <!-- Affiche les différentes commandes présentes dans le panier de l'utilisateur -->
 {% for order in orders %}
 <div class="card m-auto my-2" style="width: 18rem;">
-    <img src="{{order.offer.thumbnail.url}}" class="card-img-top mt-3 p-2" alt="{{order.offer.name}}">
+    <img src="https://django-media-4327.s3.eu-north-1.amazonaws.com/media/{{order.offer.thumbnail}}" class="card-img-top mt-3 p-2" alt="{{order.offer.name}}">
     <div class="card-body">
       <h5 class="card-title">{{order.offer.name}}</h5>
       <p class="card-text">{{order.offer.description}}</p>

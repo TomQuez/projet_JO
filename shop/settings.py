@@ -16,14 +16,11 @@ import os
 import dj_database_url
 import environ
 from shop.storage_backends import MediaStorage
-# from dotenv import load_dotenv
 
-# load_dotenv()
-# env=environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# environ.Env.read_env(BASE_DIR / '.env' )
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -124,36 +121,26 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-
-# STATIC_ROOT=BASE_DIR / "staticfiles"
-# STATIC_URL = 'static/'
-
-# STATICFILES_DIRS=[BASE_DIR / "static"]
-# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')   
-# AWS_DEFAULT_ACL=None
-# AWS_S3_SIGNATURE_NAME='s3v4'
+
 AWS_S3_REGION_NAME='eu-north-1'
-# AWS_S3_FILE_OVERWRITE=False
-# AWS_S3_VERITY=True
+
 
 AWS_S3_CUSTOM_DOMAIN='django-media-4327.s3.eu-north-1.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS={'CacheControl':'max-age=86400'}
 AWS_LOCATION='static'    
 PUBLIC_MEDIA_LOCATION='media'
-# STATICFILES_DIRS=[BASE_DIR / "static"]
+
 STATIC_ROOT=BASE_DIR/"static"
 STATIC_URL=f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 MEDIA_URL=f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 STATICFILES_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE='shop.storage_backends.MediaStorage'
-# MEDIA_URL='/media/'
+
 MEDIA_ROOT=BASE_DIR / "media"
     
     

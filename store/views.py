@@ -198,7 +198,8 @@ def delete_cart(request):
     """Vue qui supprime le panier de l'utilisateur."""
     
     if cart := request.user.cart:
-        
+        for order in cart.orders.all():
+            order.delete()
         cart.delete()   
     
     
