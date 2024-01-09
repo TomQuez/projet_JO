@@ -169,7 +169,7 @@ def checkout(request):
             s3_key=f'qrcode/{ticket.ticket_name}.png'
             img.save(qrcode_path)
             
-            
+            ticket.ticket_key=unique_key
             ticket.qrcode_ticket=qrcode_path
             ticket.save()   
 

@@ -73,6 +73,7 @@ class Ticket(models.Model):
     """Modèle destiné à représenter un billet. Le billet physique qui sera controlé lors de l'évènement réel est un qr code.Un billet équivaut à un qr code. chaque qr code est généré grâce à une clé unique."""
     
     user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
+    ticket_key=models.TextField(max_length=1000, blank=True,null=True)
     qrcode_ticket=models.ImageField(upload_to="qrcode",blank=True,null=True)
     ticket_name=models.CharField(max_length=200)
     
