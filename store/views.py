@@ -10,6 +10,7 @@ from botocore.exceptions import NoCredentialsError
 import boto3
 import os
 from io import BytesIO
+from django.contrib.auth import get_user_model
 
 from decouple import config
 from shop.settings import BASE_DIR, AWS_LOCATION,AWS_S3_CUSTOM_DOMAIN
@@ -86,14 +87,28 @@ def offer_detail(request,slug):
     }
     return render(request,'store/offer_detail.html',context)
 
+def create_visitor_id():
+    return str(uuid.uuid4())
 
 def add_to_cart(request,slug):
     
     """Vue qui ajoute une offre de billet au panier de l'utilisateur."""
-    
-    user=request.user
+    if request.user.is_authenticated:
+        user=request.user
+    else :
+        visitor_id=request.session.get('visitor_id')
+        if not visitor_id:
+            visitor_id=create_visitor_id()
+            request.session['visitor_id']=visitor_id
+        User=get_user_model()
+        user,_=User.objects.get_or_create(username=visitor_id, defaults={'email':f'{visitor_id}@example.com'})
+            
     offer=get_object_or_404(Offer,slug=slug)
+    
+    
     cart, _ =Cart.objects.get_or_create(user=user)
+    
+    
     order,created=Order.objects.get_or_create(user=user,ordered=False,offer=offer)
     
     if created:
@@ -102,16 +117,27 @@ def add_to_cart(request,slug):
     else:
         order.quantity+=1
         order.save()
-        
+    if not request.user.is_authenticated:
+        request.session['visitor_cart_id']=cart.id
+        request.session['visitor_has_selected_offer']=True
+        request.session['visitor_cart_quantity']=cart.orders.count()
+    
     return redirect(reverse("offer-detail",kwargs={"slug":slug}))
     
     
 def cart(request):
     
     """Vue qui affiche le panier de l'utilisateur."""
-    
-    
-    cart=get_object_or_404(Cart,user=request.user)
+    user=request.user
+    if not user.is_authenticated:   
+        visitor_id=request.session.get('visitor_id')
+        if not visitor_id:
+            visitor_id=create_visitor_id()
+            request.session['visitor_id']=visitor_id
+        User=get_user_model()
+        user,_=User.objects.get_or_create(username=visitor_id, defaults={'email':f'{visitor_id}@example.com'})
+        
+    cart=get_object_or_404(Cart,user=user)
     total_price=0
     total_quantity=0
     for order in cart.orders.all():
@@ -130,6 +156,10 @@ def cart(request):
     
     
     return render(request,'store/cart.html',context=context)
+    
+    
+    
+    
 
 
 @transaction.atomic
@@ -197,11 +227,23 @@ def delete_cart(request):
     
     """Vue qui supprime le panier de l'utilisateur."""
     
-    if cart := request.user.cart:
-        for order in cart.orders.all():
-            order.delete()
-        cart.delete()   
+    user=request.user
+    if not user.is_authenticated:   
+        visitor_id=request.session.get('visitor_id')
+        if not visitor_id:
+            visitor_id=create_visitor_id()
+            request.session['visitor_id']=visitor_id
+        User=get_user_model()
+        user,_=User.objects.get_or_create(username=visitor_id, defaults={'email':f'{visitor_id}@example.com'})
+        
+    cart=get_object_or_404(Cart,user=user)
+    cart.delete()   
     
+    if request.session.get('visitor_id'):
+            
+        del request.session['visitor_id']
+        del request.session['visitor_has_selected_offer']
+        del request.session['visitor_cart_quantity']
     
     return redirect('index')
 

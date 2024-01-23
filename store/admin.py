@@ -20,7 +20,7 @@ class OrderAdmin(admin.ModelAdmin):
     
 class TicketAdmin(admin.ModelAdmin):
     """Personnalisation de l'interface d'administration."""
-    list_display   = ('user', 'ticket_name')
+    list_display   = ('user', 'ticket_name','ticket_key')
     list_filter    = ('user','ticket_name')
 
 

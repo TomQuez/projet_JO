@@ -44,7 +44,7 @@ class Order(models.Model):
     
     """Modèle destiné à représenter une commande. Les utilisateurs peuvent créer des commandes et les supprimer. La commande est créée lorsqu'un utilisateur ajoute une offre à son panier."""
     
-    user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user=models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE,null=True,blank=True)
     offer=models.ForeignKey(Offer,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=1)
     ordered=models.BooleanField(default=False)
@@ -57,7 +57,7 @@ class Cart(models.Model):
     
     """Modèle destiné à représenter le panier d'un utilisateur. Les utilisateurs peuvent créer, et supprimer leur panier."""
     
-    user=models.OneToOneField(AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user=models.OneToOneField(AUTH_USER_MODEL,on_delete=models.CASCADE,null=True,blank=True)
     orders=models.ManyToManyField(Order)
     
     def __str__(self):

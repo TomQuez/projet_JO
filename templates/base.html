@@ -38,10 +38,12 @@
             <li class="nav-item"><a href="{% url 'signup' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/sign-up-application-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> S'inscrire</a></li>
             <li class="nav-item">Pour acheter un billet, vous devez être inscrit et ensuite être connecté</li>
             {% endif %}
-            {% if user.cart %}
-
+            {% if user.cart or request.session.visitor_has_selected_offer %}
+                {% if user.is_authenticated %}
             <li><a href="{% url 'cart' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/cart-shopping-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Votre panier ({{user.cart.orders.all|length}})</a></li>
-                
+                {% else %}
+                <li><a href="{% url 'cart' %}" id="nav-link" class="nav-link"><img src="{% static 'icons/cart-shopping-svgrepo-com.svg' %}" alt="favicon" width="16" height="16"> Votre panier ({{request.session.visitor_cart_quantity|default:0}})</a></li>
+                {% endif %}
                 
               
 

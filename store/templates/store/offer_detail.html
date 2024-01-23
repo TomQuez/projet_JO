@@ -12,12 +12,7 @@
         <li class="list-group-item">Prix : {{offer.price}} €</li>
         
         <li class="list-group-item">Billets disponibles : {{offer.stock}} </li>
-        {% if user.is_authenticated %}
-      
         <li class="list-group-item"><a href="{% url 'add-to-cart' offer.slug %}">Ajouter au panier</a></li>
-        {% else %}
-        <li class="list-group-item">Vous devez être   <strong>connecté</strong> pour ajouter l'article à votre panier</li>
-       {% endif %}
         </ul>
     </div>`;
 </div>
