@@ -56,7 +56,7 @@
 </fieldset>
 </form>
 {% else %}
-<p>Vous devez être inscrit et connecté pour procéder au paiement</p>
+<p class="alert alert-danger text-center">Vous devez être <strong>inscrit</strong> et <strong>connecté</strong> pour procéder au paiement</p>
 {% endif %}
 <a href="{% url 'delete-cart' %}" class="btn btn-primary col-sm-3" id="btn-empty-cart">Vider le panier</a>
 
