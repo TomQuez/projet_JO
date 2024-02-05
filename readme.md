@@ -81,6 +81,7 @@ Le projet est structuré de la manière suivante :
 │ ├── images
 | ├── javascript
 | | |── script.js
+├── media
 ├── accounts
 │ ├── templates
 │ │ ├── login.html
