@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("get_blog_articles/")
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
         let collectionData = data.data;
 
         displayArticles(collectionData);
@@ -45,9 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const articleData = data;
 
     articleData.forEach((article) => {
-      console.log(article);
-      console.log(article.thumbnail);
-      console.log(article.thumbnail.url);
       articleList.innerHTML += `<div class="card m-auto my-2" style="width: 24rem;">
       <img src="${article.thumbnail}" class="card-img-top mt-3 p-2" alt="${article.title}">
       <div class="card-body">
