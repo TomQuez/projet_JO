@@ -53,6 +53,8 @@ python manage.py runserver
 ## Structure du projet
 
 Le projet est structuré de la manière suivante :
+
+```bash
 .
 ├── Shop
 │ ├── settings.py
@@ -79,3 +81,21 @@ Le projet est structuré de la manière suivante :
 │ ├── images
 | ├── javascript
 | | |── script.js
+├── accounts
+│ ├── templates
+│ │ ├── login.html
+│ │ ├── signup.html
+│ ├── admin.py
+│ ├── apps.py
+│ ├── models.py
+│ ├── tests.py
+│ └── views.py
+├── manage.py
+├── requirements.txt
+└── README.md
+```
+
+## Contact
+
+Pour toute question ou demande d'information, vous pouvez me contacter par mail à l'adresse suivante :
+tom.quez@live.fr
